@@ -30,7 +30,7 @@ public class Users implements Serializable{
 	@Column(name = "user_id")
 	private long id;
 	
-	@Column(name= "user_name")
+	@Column(name= "user_name", unique = true)
 	private String username;
 	
 	@Column(name = "password")
@@ -42,6 +42,12 @@ public class Users implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+	public Users(Users users) {
+		this.id = users.getId();
+		this.username = users.getUsername();
+		this.roles = users.getRoles();
+	}
 
 	public long getId() {
 		return id;
