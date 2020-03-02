@@ -26,6 +26,13 @@ public class Role implements Serializable{
 	@Column(name= "role_name")
 	private String roleName;
 
+	public Role(String roleName) {
+		this.roleName = roleName;
+	}
+	
+	public Role() {
+	}
+
 	public long getId() {
 		return id;
 	}

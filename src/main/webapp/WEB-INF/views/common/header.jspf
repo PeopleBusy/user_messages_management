@@ -1,0 +1,37 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<html>
+	<head>
+		<title>Users Messages Management</title>
+		<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/>
+		
+		<style>
+			.main-content {
+				display: flex;
+			    align-items: center;
+			    height: 80%;
+			}
+			.footer {
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background-color: black;
+				color: white;
+				height: 100px;
+				text-align: center;
+			}
+			.txt-success {
+				color: #28a745;
+			}
+			
+			.txt-error {
+				color: #dc3545;
+			}
+		</style>
+	</head>
+
+<body>

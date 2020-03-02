@@ -21,8 +21,7 @@ public class ViewResolverConfiguration implements WebMvcConfigurer {
 	  public void addViewControllers(ViewControllerRegistry registry) {
 	      registry.addViewController("/").setViewName("login");	      
 	      registry.addViewController("/login").setViewName("login");
-	      registry.addViewController("/register").setViewName("register");
-	      registry.addViewController("/secured/dashboard").setViewName("/secured/dashboard");
+	     // registry.addViewController("/404").setViewName("error/404");
 	  }
 	  
 	  @Override

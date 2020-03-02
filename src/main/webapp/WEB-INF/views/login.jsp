@@ -1,19 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Login page</title>
-	<base href="/">
-	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0/css/bootstrap.min.css"/>
-</head>
-<body>
-	<h1>Login page</h1>
+<%@ include file="common/header.jspf"%>
+
+<div class="container">
+	<div class="main-content">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<h2 class="form-heading text-center">Sign in</h2>
+			<form method="POST" action="/login" class="form-signin">
+				<div class="form-group ">
+				
+					<p class="text-center ${error != null ? 'txt-error' : 'txt-success'}">${msg}</p>
+					
+					<p>
+					  <input name="username" type="text" class="form-control" placeholder="Username" autofocus required/>
+					</p>
+					<p>
+					   <input name="password" type="password" class="form-control" placeholder="Password" required/>
+					</p>
+					       
+					<p>
+					   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+					</p>
+					<a class="btn btn-lg btn-default btn-block" href="/register">Create account here</a>         
+				</div>				
+			</form>
+		</div>
+	</div>
+</div>
 	
-	<button class="btn btn-primary">Sign in</button>
-	
-	<script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
-	<script type="text/javascript" src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>	
-</body>
-</html>
+<%@ include file="common/footer.jspf"%>

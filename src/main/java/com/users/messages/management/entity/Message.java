@@ -26,8 +26,8 @@ public class Message implements Serializable{
 	@Column(name = "message_id")
 	private long id;
 	
-	@Column(name= "message")
-	private String message;
+	@Column(name= "textMessage")
+	private String textMessage;
 	
 	@Column(name = "createdTs")
 	private LocalDateTime createdTs;
@@ -51,12 +51,12 @@ public class Message implements Serializable{
 		this.id = id;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getTextMessage() {
+		return textMessage;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setTextMessage(String textMessage) {
+		this.textMessage = textMessage;
 	}
 
 	public LocalDateTime getCreatedTs() {

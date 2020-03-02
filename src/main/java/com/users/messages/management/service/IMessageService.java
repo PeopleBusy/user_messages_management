@@ -1,16 +1,15 @@
 package com.users.messages.management.service;
 
+import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.domain.Page;
 
 import com.users.messages.management.entity.Message;
 
 
 public interface IMessageService {
-	Page<Message> getAllMessageWithPagination(int page, int size);
-	Page<Message> getUserMessagesWithPagination(Long userId, int page, int size);
+	List<Message> getAllMessages();
+	List<Message> getUserMessages(String username);
 	Optional<Message> getMessageById(Long id);	
 	Message createOrUpdateMessage(Message message);
-	void deleteMessage(Message message);
+	void deleteMessage(Long id);
 }

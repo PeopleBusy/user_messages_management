@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService)
-		.passwordEncoder(getPasswordEncoder());
+			.passwordEncoder(getPasswordEncoder());
 	}
 
 	@Override
@@ -38,12 +38,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
         .authorizeRequests()
         	.antMatchers("/css/**","/js/**","/images/**").permitAll()
-	        .antMatchers("/secured/*").authenticated()
-	        .antMatchers("/admin/*").access("(hasRole('ROLE_ADMIN'))")
+	        .antMatchers("/secured/**").authenticated()
+	        .antMatchers("/admin/**").access("(hasRole('ROLE_ADMIN'))")
 	        .anyRequest().permitAll().and()
 			.formLogin().loginPage("/login").permitAll()
-			        .defaultSuccessUrl("/secured/dashboard").and()
+			        .defaultSuccessUrl("/secured/create-message").and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+			.and().exceptionHandling().accessDeniedPage("/error/404")
 			.and().csrf().disable();
 	}
 }

@@ -1,11 +1,9 @@
 package com.users.messages.management.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.users.messages.management.entity.Message;
@@ -18,13 +16,13 @@ public class MessageService implements IMessageService {
 	private IMessagesRepository messageRepository;
 
 	@Override
-	public Page<Message> getAllMessageWithPagination(int page, int size) {
-		return messageRepository.findAll(PageRequest.of(page, size, Sort.by("id")));
+	public List<Message> getAllMessages() {
+		return messageRepository.findAll();
 	}
 	
 	@Override
-	public Page<Message> getUserMessagesWithPagination(Long userId, int page, int size) {
-		return messageRepository.getUserMessagesWithPagination(userId, PageRequest.of(page, size, Sort.by("id")));
+	public List<Message> getUserMessages(String username) {
+		return messageRepository.getUserMessages(username);
 	}
 
 	@Override
@@ -38,7 +36,7 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public void deleteMessage(Message message) {
-		messageRepository.delete(message);
+	public void deleteMessage(Long id) {
+		messageRepository.deleteById(id);
 	}
 }

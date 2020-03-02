@@ -2,6 +2,7 @@ package com.users.messages.management.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user")
@@ -36,17 +38,24 @@ public class Users implements Serializable{
 	@Column(name = "password")
 	private String password;
 	
+	@Transient
+	private String confirmation;
+	
 	@Column(name = "createdTs")
 	private LocalDateTime createdTs;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
 	public Users(Users users) {
 		this.id = users.getId();
 		this.username = users.getUsername();
 		this.roles = users.getRoles();
+	}
+
+	public Users() {
+
 	}
 
 	public long getId() {
@@ -73,6 +82,14 @@ public class Users implements Serializable{
 		this.password = password;
 	}
 
+	public String getConfirmation() {
+		return confirmation;
+	}
+
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
+	}
+
 	public LocalDateTime getCreatedTs() {
 		return createdTs;
 	}
@@ -87,10 +104,6 @@ public class Users implements Serializable{
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 }
