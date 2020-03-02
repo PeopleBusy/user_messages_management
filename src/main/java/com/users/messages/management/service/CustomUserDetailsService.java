@@ -41,8 +41,7 @@ public class CustomUserDetailsService implements ICustomUserDetailsService {
 
 	@Override
 	public Optional<Users> getAuthenticatedUser(Users user) {
-		Authentication auth = AuthenticationHelper.getAuthentication();
-		return usersRepository.findByUsername(auth.getName());
+		return usersRepository.findByUsername(AuthenticationHelper.getAuthenticatedUsername());
 	}
 
 	@Override
